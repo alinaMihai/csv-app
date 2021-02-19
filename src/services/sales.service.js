@@ -14,13 +14,10 @@ const initialState = {
 const reducer = (state = [], action) => {
     if (action.type === SALES_ADD) {
         return {
+            ...state,
             sales: [
-                ...state.sales, {
-                    key: uuidv4(),
-                    ...action.payload
-                }
-            ],
-            ...state
+                ...state.sales, action.payload
+            ]
         };
     }
     if (action.type === SALES_FETCH_SUCCESS) {
@@ -49,14 +46,30 @@ export const SalesProvider = ({children}) => {
 
         } else {
             const parsedData = data.map(entry => {
-                return {...entry, key: entry['Order ID']}
+                return {
+                    ...entry,
+                    key: entry['Order ID']
+                }
             })
             dispatch({type: SALES_FETCH_SUCCESS, payload: parsedData});
         }
     }
 
     const addSale = (sale) => {
-        dispatch({type: SALES_ADD, payload: sale})
+        const key = uuidv4();
+        const newSale = {
+            'Region': sale.region,
+            'Country': sale.country,
+            'Item Type': sale.itemType,
+            'Order Date': sale.orderDate.toDateString(),
+            'Order ID': key,
+            'Ship Date': sale.shipDate?.toDateString(),
+            'Units Sold': sale.unitsSold,
+            'Unit Price': sale.unitPrice,
+            'Unit Cost': sale.unitCost,
+            key
+        }
+        dispatch({type: SALES_ADD, payload: newSale})
     }
 
     return (
