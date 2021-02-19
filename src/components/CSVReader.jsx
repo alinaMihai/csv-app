@@ -1,13 +1,13 @@
 import { CSVReader } from 'react-papaparse';
 
-export default function CSVReader2({loadSales}) {
+export default function CSVReader2({loadData}) {
   const handleOnDrop = (data) => {
-    loadSales({data:data.map(field => field.data)});
+    loadData({data:data.map(field => field.data)});
   };
 
   const handleOnError = (err, file, inputElem, reason) => {
     console.log(err);
-    loadSales({data:[], hasError:true});
+    loadData({data:[], hasError:true});
   };
 
   const handleOnRemoveFile = (data) => {

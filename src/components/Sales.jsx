@@ -3,6 +3,7 @@ import {SalesContext} from '../services/sales.service';
 import CSVReader from './CSVReader';
 import DataTable from './DataTable';
 import AddDataEntry from './AddDataEntry';
+import SalesStatistics from './sale-statistics/SalesStatistics';
 const Sales = () => {
     const {sales, error, loadSales, addSale} = useContext(SalesContext);
 
@@ -11,9 +12,10 @@ const Sales = () => {
     }
     return (
         <section>
-            <CSVReader loadSales={loadSales}/>
+            <CSVReader loadData={loadSales}/>
             <AddDataEntry addSale={addSale}/>  
-            <DataTable sales={sales}/>
+            <DataTable data={sales}/>
+            <SalesStatistics data={sales}/>
         </section>
     )
 

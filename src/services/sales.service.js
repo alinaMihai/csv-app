@@ -16,7 +16,7 @@ const reducer = (state = [], action) => {
         return {
             ...state,
             sales: [
-                ...state.sales, action.payload
+                 action.payload, ...state.sales
             ]
         };
     }

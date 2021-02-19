@@ -1,6 +1,6 @@
 import {Table} from 'antd';
 
-const columns = getColumns([
+const salesColumns = getColumns([
     {
         name: 'Region',
         width: 100
@@ -37,13 +37,13 @@ function getColumns(headers) {
     });
 }
 
-export default function DataTable({sales}) {
+export default function DataTable({data,columns = salesColumns}) {
     return <Table
         sticky
         pagination={{
         position: ['topLeft'],
         hideOnSinglePage: true
     }}
-        dataSource={sales}
+        dataSource={data}
         columns={columns}/>;
 }
