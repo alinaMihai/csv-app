@@ -3,23 +3,31 @@ import {Table} from 'antd';
 const salesColumns = getColumns([
     {
         name: 'Region',
-        width: 100
+        width: 100,
+        sorter: (a, b) => a['Region'].localeCompare(b['Region'], 'en')
     }, {
-        name: 'Country'
+        name: 'Country',
+        sorter: (a, b) => a['Country'].localeCompare(b['Country'], 'en')
     }, {
-        name: 'Item Type'
+        name: 'Item Type',
+        sorter: (a, b) => a['Item Type'].localeCompare(b['Item Type'], 'en')
     }, {
-        name: 'Order Date'
+        name: 'Order Date',
+        sorter: (a, b) => new Date(a['Order Date']).getTime() - new Date(b['Order Date']).getTime()
     }, {
         name: 'Order ID'
     }, {
-        name: 'Ship Date'
+        name: 'Ship Date',
+        sorter: (a, b) => new Date(a['Ship Date']).getTime() - new Date(b['Ship Date']).getTime()
     }, {
-        name: 'Units Sold'
+        name: 'Units Sold',
+        sorter: (a, b) => a['Units Sold'] - b['Units Sold']
     }, {
-        name: 'Unit Price'
+        name: 'Unit Price',
+        sorter: (a, b) => a['Unit Price'] - b['Unit Price']
     }, {
-        name: 'Unit Cost'
+        name: 'Unit Cost',
+        sorter: (a, b) => a['Unit Price'] - b['Unit Price']
     }
 ]);
 
