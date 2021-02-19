@@ -1,9 +1,6 @@
-import React, { useContext } from 'react';
 import { CSVReader } from 'react-papaparse';
-import {SalesContext} from '../services/sales.service';
 
-export default function CSVReader2() {
-  const {loadSales} = useContext(SalesContext);
+export default function CSVReader2({loadSales}) {
   const handleOnDrop = (data) => {
     loadSales({data:data.map(field => field.data)});
   };

@@ -16,7 +16,7 @@ const reducer = (state = [], action) => {
         return {
             sales: [
                 ...state.sales, {
-                    id: uuidv4(),
+                    key: uuidv4(),
                     ...action.payload
                 }
             ],
@@ -48,7 +48,10 @@ export const SalesProvider = ({children}) => {
             dispatch({type: SALES_FETCH_ERROR});
 
         } else {
-            dispatch({type: SALES_FETCH_SUCCESS, payload: data});
+            const parsedData = data.map(entry => {
+                return {...entry, key: entry['Order ID']}
+            })
+            dispatch({type: SALES_FETCH_SUCCESS, payload: parsedData});
         }
     }
 

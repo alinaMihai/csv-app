@@ -1,16 +1,17 @@
 import {useContext} from 'react';
 import {SalesContext} from '../services/sales.service';
 import CSVReader from './CSVReader';
+import DataTable from './DataTable';
 const Sales = () => {
-    const {sales, error} = useContext(SalesContext);
+    const {sales, error, loadSales} = useContext(SalesContext);
     
     if(error) {
         return <p>Could not retrieve data from csv file</p>
     }
     return (
         <section>
-            <CSVReader/>
-            Sales: {JSON.stringify(sales)}
+            <CSVReader loadSales={loadSales}/>
+            <DataTable sales={sales}/>
         </section>
     )
 
