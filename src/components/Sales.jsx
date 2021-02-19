@@ -4,6 +4,7 @@ import CSVReader from './CSVReader';
 import DataTable from './DataTable';
 import AddDataEntry from './AddDataEntry';
 import SalesStatistics from './sale-statistics/SalesStatistics';
+import ExportToCSV from './ExportToCSV';
 const Sales = () => {
     const {sales, error, loadSales, addSale} = useContext(SalesContext);
 
@@ -13,7 +14,8 @@ const Sales = () => {
     return (
         <section>
             <CSVReader loadData={loadSales}/>
-            <AddDataEntry addSale={addSale}/>  
+            <AddDataEntry addSale={addSale}/>
+            <ExportToCSV data={sales}/>  
             <DataTable data={sales}/>
             <SalesStatistics data={sales}/>
         </section>

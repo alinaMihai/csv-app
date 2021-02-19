@@ -12,7 +12,6 @@ const countSalesByRegion = (sales) => {
 }
 
 const getSalesByRegionPercentage = (regionAmount, total) => {
-    console.log((regionAmount * 100) / total)
     return total <= 0 ? 0 : (regionAmount * 100) / total;
 }
 
