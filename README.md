@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Features: 
- - upload a csv file that respects the schema from the data folder or here[http://eforexcel.com/wp/downloads-18-sample-csv-files-data-sets-for-testing-sales/]
+ - upload a csv file that respects the schema from the data folder or [here](http://eforexcel.com/wp/downloads-18-sample-csv-files-data-sets-for-testing-sales/)
  - tabular representation of the data from the CSV file
  - creation of new data records using the same schema
  - delete existing records, sorting by column (display data only - doesn't keep the sorting when exporting to csv)
@@ -17,6 +17,23 @@ This project uses:
 - ant design library for ui components
 - react-papaparse for CSV processing
 - victory for the bar chart 
+
+Strong points: 
+- Context API and useReducer hook allows for separation of concerns between state data processing and React components. 
+- Container and presentation components pattern makes the code more readable, maintainable and easier to extend. 
+- separate css file for each component and use of BEM rules allows for better component encapsulation
+- fast and easy to upload and read data with pagination, sticky table header and ability to sort each column.
+- responsive design
+
+Improvements consideration: 
+- implement edit record
+- allow searching table records by certain columns
+- export sorted or filtered data
+- add more sales relevant chart data
+- add some unit tests and integration tests for core functionality
+- add PropTypes or Typescript to document the code better
+- camelcase properties on the JSON data from the CSV file for easier manipulation 
+- respect [Git WorkFlow](https://www.atlassian.com/git/tutorials/comparing-workflows) way of commiting code to the repo, and conventional commits.
 
 ## Available Scripts
 
