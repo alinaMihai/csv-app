@@ -1,5 +1,5 @@
 import { jsonToCSV } from 'react-papaparse';
-import { Button } from 'antd';
+import Button from 'antd/es/button';
 export default function ExportToCSV({ data }) {
     const handleExportFile = () => {
         const results = jsonToCSV(data);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import Button from 'antd/es/button';
 import AddDataEntryModal from './AddDataEntryModal';
 
 function AddDataEntry({ addSale }) {

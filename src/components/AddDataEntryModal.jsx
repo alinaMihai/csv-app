@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { Modal, Form, Input, InputNumber, DatePicker, Button } from 'antd';
+import Modal from 'antd/es/modal';
+import Form from 'antd/es/form';
+import Input from 'antd/es/input';
+import InputNumber from 'antd/es/input-number';
+import DatePicker from 'antd/es/date-picker';
+import Button from 'antd/es/button';
 
 const initialItem = {
     region: '',

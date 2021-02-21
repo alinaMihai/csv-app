@@ -1,4 +1,6 @@
-import { Table, Popconfirm, Button } from 'antd';
+import Table from 'antd/es/table';
+import Popconfirm from 'antd/es/popconfirm';
+import Button from 'antd/es/button'
 
 function getColumns(headers) {
     return headers.map(({ name, ...rest }) => {
