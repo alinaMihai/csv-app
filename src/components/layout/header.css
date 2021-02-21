@@ -1,0 +1,13 @@
+.header {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    background-color: var(--main-color);
+}
+
+.header p {
+    color: var(--text-color);
+    padding: 10px;
+    margin-bottom: 0;
+}

@@ -1,57 +1,72 @@
-import {Table} from 'antd';
+import { Table } from 'antd';
 
 const salesColumns = getColumns([
     {
         name: 'Region',
-        width: 100,
-        sorter: (a, b) => a['Region'].localeCompare(b['Region'], 'en')
-    }, {
+        sorter: (a, b) => a['Region'].localeCompare(b['Region'], 'en'),
+    },
+    {
         name: 'Country',
-        sorter: (a, b) => a['Country'].localeCompare(b['Country'], 'en')
-    }, {
+        sorter: (a, b) => a['Country'].localeCompare(b['Country'], 'en'),
+    },
+    {
         name: 'Item Type',
-        sorter: (a, b) => a['Item Type'].localeCompare(b['Item Type'], 'en')
-    }, {
+        sorter: (a, b) => a['Item Type'].localeCompare(b['Item Type'], 'en'),
+    },
+    {
         name: 'Order Date',
-        sorter: (a, b) => new Date(a['Order Date']).getTime() - new Date(b['Order Date']).getTime()
-    }, {
-        name: 'Order ID'
-    }, {
+        sorter: (a, b) =>
+            new Date(a['Order Date']).getTime() -
+            new Date(b['Order Date']).getTime(),
+    },
+    {
+        name: 'Order ID',
+    },
+    {
         name: 'Ship Date',
-        sorter: (a, b) => new Date(a['Ship Date']).getTime() - new Date(b['Ship Date']).getTime()
-    }, {
+        sorter: (a, b) =>
+            new Date(a['Ship Date']).getTime() -
+            new Date(b['Ship Date']).getTime(),
+        responsive: ['md'],
+    },
+    {
         name: 'Units Sold',
-        sorter: (a, b) => a['Units Sold'] - b['Units Sold']
-    }, {
+        sorter: (a, b) => a['Units Sold'] - b['Units Sold'],
+        responsive: ['md'],
+    },
+    {
         name: 'Unit Price',
-        sorter: (a, b) => a['Unit Price'] - b['Unit Price']
-    }, {
+        sorter: (a, b) => a['Unit Price'] - b['Unit Price'],
+        responsive: ['md'],
+    },
+    {
         name: 'Unit Cost',
-        sorter: (a, b) => a['Unit Price'] - b['Unit Price']
-    }
+        sorter: (a, b) => a['Unit Price'] - b['Unit Price'],
+        responsive: ['md'],
+    },
 ]);
 
 function getColumns(headers) {
-    return headers.map(({
-        name,
-        ...rest
-    }) => {
+    return headers.map(({ name, ...rest }) => {
         return {
             title: name,
             dataIndex: name,
             key: name,
-            ...rest
-        }
+            ...rest,
+        };
     });
 }
 
-export default function DataTable({data,columns = salesColumns}) {
-    return <Table
-        sticky
-        pagination={{
-        position: ['topLeft'],
-        hideOnSinglePage: true
-    }}
-        dataSource={data}
-        columns={columns}/>;
+export default function DataTable({ data, columns = salesColumns }) {
+    return (
+        <Table
+            sticky
+            pagination={{
+                position: ['topLeft'],
+                hideOnSinglePage: true,
+            }}
+            dataSource={data}
+            columns={columns}
+        />
+    );
 }

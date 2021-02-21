@@ -1,6 +1,8 @@
+import React from 'react';
 import { CSVReader } from 'react-papaparse';
+import './csv-reader.css';
 
-export default function CSVReader2({loadData}) {
+function CSVReader2({loadData}) {
   const handleOnDrop = (data) => {
     loadData({data:data.map(field => field.data)});
   };
@@ -18,8 +20,8 @@ export default function CSVReader2({loadData}) {
 
  
     return (
-      <>
-        <h5>Click and Drag Upload</h5>
+      <div className="csvReader">
+        <p>Upload File:</p>
         <CSVReader
           config={{header:true, skipEmptyLines: true }}
           onDrop={handleOnDrop}
@@ -29,6 +31,7 @@ export default function CSVReader2({loadData}) {
         >
           <span>Drop CSV file here or click to upload.</span>
         </CSVReader>
-      </>
+      </div>
     );
 }
+export default React.memo(CSVReader2);

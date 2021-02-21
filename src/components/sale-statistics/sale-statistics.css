@@ -1,9 +1,9 @@
-.title {
-    text-align: center;
+.salesStatistics__title {
+    margin-left: 10px;
+    font-size: 1.2em;
 }
 
-.chartContainer {
-    margin: 0 auto;
+.salesStatistics__container {
     max-height: 500px;
     max-width: 500px;
 }

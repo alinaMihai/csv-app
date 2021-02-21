@@ -1,0 +1,9 @@
+.footer {
+    font-size: 12px;
+    background-color: var(--main-color);
+}
+
+.footer p {
+    padding: 20px;
+    color: var(--text-color);
+}

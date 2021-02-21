@@ -1,4 +1,4 @@
-import {createContext, useReducer} from 'react';
+import {createContext, useReducer, useCallback} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
 export const SalesContext = createContext();
@@ -16,7 +16,7 @@ const reducer = (state = [], action) => {
         return {
             ...state,
             sales: [
-                 action.payload, ...state.sales
+                action.payload, ...state.sales
             ]
         };
     }
@@ -37,10 +37,9 @@ const reducer = (state = [], action) => {
 }
 
 export const SalesProvider = ({children}) => {
-    const [state,
-        dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    const loadSales = ({data, hasError}) => {
+    const loadSales = useCallback(({data, hasError}) => {
         if (hasError) {
             dispatch({type: SALES_FETCH_ERROR});
 
@@ -53,24 +52,27 @@ export const SalesProvider = ({children}) => {
             })
             dispatch({type: SALES_FETCH_SUCCESS, payload: parsedData});
         }
-    }
+    }, [dispatch]);
 
-    const addSale = (sale) => {
+    const addSale = useCallback((sale) => {
         const key = uuidv4();
         const newSale = {
             'Region': sale.region,
             'Country': sale.country,
             'Item Type': sale.itemType,
-            'Order Date': sale.orderDate.toDateString(),
+            'Order Date': sale
+                .orderDate
+                .toDateString(),
             'Order ID': key,
-            'Ship Date': sale.shipDate?.toDateString(),
+            'Ship Date': sale.shipDate
+                ?.toDateString(),
             'Units Sold': sale.unitsSold,
             'Unit Price': sale.unitPrice,
             'Unit Cost': sale.unitCost,
             key
         }
         dispatch({type: SALES_ADD, payload: newSale})
-    }
+    }, [dispatch]);
 
     return (
         <SalesContext.Provider

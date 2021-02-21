@@ -1,0 +1,9 @@
+.csvReader {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.csvReader p {
+    margin-right: 10px;
+}
