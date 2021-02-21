@@ -1,5 +1,6 @@
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from 'victory';
 import './sale-statistics.css';
+
 const countSalesByRegion = (sales) => {
     return sales.reduce((acc, sale) => {
         if (!acc[sale['Region']]) {
@@ -39,7 +40,7 @@ export default function SaleStatistics({
     return (
         <>
             <h2 className="salesStatistics__title">{title}</h2>
-            <div className='salesStatistics__container'>
+            <div className="salesStatistics__container">
                 <VictoryChart
                     style={{ parent: { maxWidth: '100%' } }}
                     domainPadding={{ x: 30, y: 30 }}

@@ -5,6 +5,7 @@ export const SalesContext = createContext();
 const SALES_ADD = 'SALES_ADD';
 const SALES_FETCH_SUCCESS = 'SALES_FETCH_SUCCESS';
 const SALES_FETCH_ERROR = 'SALES_FETCH_ERROR';
+const SALES_DELETE = 'SALES_DELETE';
 
 const initialState = {
     sales: [],
@@ -31,6 +32,12 @@ const reducer = (state = [], action) => {
         return {
             ...state,
             error: true
+        }
+    }
+    if(action.type === SALES_DELETE) {
+        return {
+            ...state,
+            sales: state.sales.filter(sale => sale.key!==action.payload)
         }
     }
     return state;
@@ -74,13 +81,18 @@ export const SalesProvider = ({children}) => {
         dispatch({type: SALES_ADD, payload: newSale})
     }, [dispatch]);
 
+   const deleteSale = useCallback((key) => {
+       dispatch({type: SALES_DELETE, payload: key});
+   }, [dispatch]) 
+
     return (
         <SalesContext.Provider
             value={{
             sales: state.sales,
             error: state.error,
             addSale,
-            loadSales
+            loadSales,
+            deleteSale
         }}>
             {children}
         </SalesContext.Provider>

@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'antd';
 import AddDataEntryModal from './AddDataEntryModal';
 
-export default function AddDataEntry({ addSale }) {
+function AddDataEntry({ addSale }) {
     const [isModalVisble, setIsModalVisible] = useState(false);
     const toggleAddEntryModal = (value) => {
         setIsModalVisible(value || !isModalVisble);
@@ -24,3 +24,5 @@ export default function AddDataEntry({ addSale }) {
         </>
     );
 }
+
+export default React.memo(AddDataEntry);
